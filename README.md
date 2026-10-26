@@ -38,6 +38,12 @@ Adds GitLab as a source control provider: GitLab.com or a self-hosted GitLab. Si
 
 4. **Connect your account** under **Settings → Source control** in Swage.
 
+### What Swage can reach
+
+GitLab has no narrower scope than `api` that can add deploy keys and webhooks, so a connection's token can do anything the account it belongs to can, in every project it can reach. Tokens expire after two hours and Swage refreshes them, but a token taken from Swage in that time could be used against all of those projects.
+
+To limit that, connect a dedicated GitLab account, such as `swage-deploy`, that is a **Maintainer** of only the projects Swage deploys, rather than your own account. With a self-hosted GitLab, an administrator can also restrict which groups that account belongs to.
+
 GitLab's access tokens expire after two hours. Swage refreshes them with the refresh token GitLab issues, so a connection keeps working until you disconnect it or revoke the application in GitLab.
 
 ## Webhooks
